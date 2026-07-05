@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учёт игрушек в детском саду</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Учёт игрушек в детском саду</h1>
+        <p class="subtitle">Детекция объектов на изображении с помощью нейросети YOLOv8</p>
+
+        <!-- Форма загрузки файла -->
+        <div class="card">
+            <input type="file" id="imageInput" accept="image/*,video/*">
+
+            <div class="mode-select">
+                <span>Режим:</span>
+                <label>
+                    <input type="radio" name="mode" value="detect" checked>
+                    Детекция (рамки)
+                </label>
+                <label>
+                    <input type="radio" name="mode" value="segment">
+                    Сегментация (маски)
+                </label>
+            </div>
+
+            <button id="runBtn" onclick="processImage()">Запустить обработку</button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <!-- Блок результата -->
+        <div class="results" id="results" style="display:none;">
+            <div class="card">
+                <h2>Результат</h2>
+                <img id="resultImage" src="" alt="Обработанное изображение" style="display:none;">
+                <video id="resultVideo" src="" controls style="display:none;"></video>
+                <p><a id="downloadLink" class="report-link" href="" download style="display:none;">Скачать результат</a></p>
+            </div>
+            <div class="card">
+                <h2>Статистика</h2>
+                <div id="stats"></div>
+            </div>
+        </div>
+
+        <!-- Отчёты -->
+        <div class="card">
+            <h2>Отчёты</h2>
+            <a class="report-link" href="/report/excel">Скачать Excel</a>
+            <a class="report-link" href="/report/pdf">Скачать PDF</a>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
